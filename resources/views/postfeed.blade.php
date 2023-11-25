@@ -7,6 +7,8 @@
 
     <br>
 
+
+    <div class="grid grid-cols-5 gap-2">
     @foreach ($post as $p)
     <div class="max-w-md mx-auto bg-white shadow-md rounded-lg overflow-hidden">
         <div class="p-4">
@@ -19,6 +21,7 @@
         </div>
       </div>
     @endforeach
+    </div>
 
 
 
