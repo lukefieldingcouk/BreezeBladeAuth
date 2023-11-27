@@ -42,9 +42,12 @@ Route::middleware('auth')->group(function () {
 
 /* Custom routing */
 Route::middleware(['auth'])->group(function () {
-
-    
+    // to post feed
     Route::get('/postfeed', [PostController::class, 'show'])->name('postfeed');
+    
+    // to individual post
+    Route::get('/indpost/{id}', [PostController::class, 'showposts'])->name('PostController.showposts');
+
 });
 
 

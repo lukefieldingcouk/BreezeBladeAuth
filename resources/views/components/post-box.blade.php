@@ -4,17 +4,7 @@
 
 @foreach ($post as $p)
 
-    <!-- <div class="max-w-md mx-auto bg-white shadow-md rounded-lg overflow-hidden">
-        <div class="p-4">
-          <h2 class="text-xl font-bold text-gray-800 mb-2">{{ $p->title }}</h2>
-          <p class="text-gray-700 text-base">{{ $p->content }}</p>
-        </div>
-        <div class="bg-gray-100 p-4">
-          <span class="text-gray-600 text-sm">Posted by {{ $p->name }}</span>
-          <span class="text-gray-600 text-sm ml-2">on {{ $p->created_at }}</span>
-        </div>
-      </div>
-    -->
+    <a href="{{ URL('/indpost/'.$p->id) }} ">
     <div x-data="{ expanded: false }" class="flex w-full flex-col space-y-4 bg-white shadow-md rounded-lg">
       <div class="bg-gray-100 p-4">
         <span class="text-gray-600 text-sm">Posted by {{ $p->name }}</span>
@@ -28,6 +18,7 @@
         <button x-show="expanded" @click="expanded = false" class="text-indigo-500 text-sm mt-2">Read less</button>
       </div>
     </div>
+  </a>
 
 @endforeach
 

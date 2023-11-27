@@ -30,10 +30,15 @@ class PostController extends Controller
     public function show()
     {
         $post = UserPost::simplePaginate(4);
-        return view('postfeed')->with('post', $post);
+        return view('posts.postfeed')->with('post', $post);
     }
 
     
+    public function showposts($id)
+    {
+        $indpost = UserPost::find($id);
+        return view('posts.indpost', ['indpost' => $indpost]);
+    }
 
 
 
