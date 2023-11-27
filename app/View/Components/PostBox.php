@@ -6,14 +6,19 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
+
 class PostBox extends Component
 {
     /**
      * Create a new component instance.
      */
-    public function __construct()
+
+
+    /** $post variable from main view (postfeed.blade.php - defined there by PostController.php ) */
+    public $post;
+    public function __construct($post)
     {
-        //
+        $this->post = $post;
     }
 
     /**

@@ -25,9 +25,11 @@ class PostController extends Controller
         return redirect('dashboard')->with('status', 'Post Submitted');
     }
 
+
+
     public function show()
     {
-        $post = UserPost::all();
+        $post = UserPost::simplePaginate(4);
         return view('postfeed')->with('post', $post);
     }
 

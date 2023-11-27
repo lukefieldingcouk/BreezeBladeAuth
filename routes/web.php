@@ -19,21 +19,33 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+/* In build Breeze routing */
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+
+
 Route::post('dashboard', [PostController::class, 'store'])->name('PostController.store');
 
+
+/* In build Breeze routing */
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/postfeed', [PostController::class, 'show'])->name('postfeed');
 
 
+
+/* Custom routing */
+Route::middleware(['auth'])->group(function () {
+
+    
+    Route::get('/postfeed', [PostController::class, 'show'])->name('postfeed');
+});
 
 
 
