@@ -45,8 +45,13 @@ Route::middleware(['auth'])->group(function () {
     // to post feed
     Route::get('/postfeed', [PostController::class, 'show'])->name('postfeed');
     
-    // to individual post
-    Route::get('/indpost/{id}', [PostController::class, 'showposts'])->name('PostController.showposts');
+    // to individual post, by post ID
+    Route::get('/indpost/{id}', [PostController::class, 'showindpost'])->name('PostController.showindpost')->name('indpost');
+
+
+    // post to PostController.storecomment with comment form data
+    Route::post('/indpost', [PostController::class, 'storecomment'])->name('PostController.storecomment');
+
 
 });
 

@@ -3,8 +3,8 @@
 <div class="flex flex-row space-x-4">
 
 @foreach ($post as $p)
-
-    <a href="{{ URL('/indpost/'.$p->id) }} ">
+{{-- <a> points to the individual post URL, with post ID --}}
+    <a href="{{ URL('/indpost/'.$p->id) }} "> 
     <div x-data="{ expanded: false }" class="flex w-full flex-col space-y-4 bg-white shadow-md rounded-lg">
       <div class="bg-gray-100 p-4">
         <span class="text-gray-600 text-sm">Posted by {{ $p->name }}</span>
