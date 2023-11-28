@@ -7,5 +7,3 @@
     <input type="hidden" id="postid" name="postid" value="{{ $indpost->id }}">
     <button type="submit" class="bg-indigo-500 text-white px-4 py-2 rounded-md hover:bg-indigo-600 transition-colors duration-300">Submit</button>
   </form>
-
-
