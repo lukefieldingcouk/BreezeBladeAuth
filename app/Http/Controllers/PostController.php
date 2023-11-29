@@ -27,14 +27,16 @@ class PostController extends Controller
         $NewPost->content = $request->input('content');
         $NewPost->save();
 
-        return redirect('dashboard')->with('status', 'Post Submitted');
+        return redirect('dashboard')->with('status', 'Post Submitted!');
     }
 
 
     // Showing all posts, paginated 
     public function show()
     {
-        $post = UserPost::simplePaginate(4);
+        // $post = UserPost::simplePaginate(4);
+        $post = UserPost::orderBy('id', 'desc')->paginate(4);
+
         return view('posts.postfeed')->with('post', $post);
     }
 
