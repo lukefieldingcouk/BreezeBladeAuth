@@ -36,8 +36,9 @@ class PostController extends Controller
     public function show()
     {
         $post = UserPost::orderBy('id', 'desc')->paginate(4);
+
         if($post) {
-            return view('posts.postfeed')->with('post', $post);
+            return view('posts.postfeed')->with(['post' => $post]);
         } else {
             return view('posts.postfeed');
         }
@@ -59,7 +60,7 @@ class PostController extends Controller
         $postToDelete = UserPost::where('id', $postid);
         $postToDelete->delete();
 
-        return view('posts.postfeed')->with('status', 'Post Deleted!');
+        return redirect('postfeed')->with('status', 'Post Deleted!');
     }
 
 

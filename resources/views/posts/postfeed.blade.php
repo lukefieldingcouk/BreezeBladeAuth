@@ -7,17 +7,24 @@
 
     <br>
 
+    {{-- container start --}}
+    <div class="container m-auto p-2">
 
-<div class="container m-auto p-2">
-<!-- Post cards, passing $post variable from this page into post-box.blade.php component. -->
-@if($post)
-    <x-post-box :post="$post" />
-@endif
-<br>
+        <!-- Post cards, passing $post variable from this page into post-box.blade.php component. -->
+        @if(isset($post))
 
-{!! $post->render() !!}
-   
-</div>
+        <x-post-box :post="$post" />
+
+        <br>
+        {!! $post->render() !!}
+        <br>
+
+        @endif
+
+
+
+        {{-- container end --}}
+    </div>
 
 
 
