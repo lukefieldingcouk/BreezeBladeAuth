@@ -36,7 +36,12 @@ class PostController extends Controller
     public function show()
     {
         $post = UserPost::orderBy('id', 'desc')->paginate(4);
-        return view('posts.postfeed')->with('post', $post);
+        if($post) {
+            return view('posts.postfeed')->with('post', $post);
+        } else {
+            return view('posts.postfeed');
+        }
+        
     }
 
     
