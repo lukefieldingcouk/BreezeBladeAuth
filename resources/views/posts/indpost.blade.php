@@ -19,11 +19,23 @@
     <div class="container mx-auto px-4">
         {{-- Individual post card --}}
         <x-individualpost :$indpost />
+
+        {{-- If user is post creator, allow deletion --}}
+        @if(Auth::id() == $indpost->UserID)
+        <a href="{{ route('deletepost', ['postId' => $indpost->id]) }}"
+            class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
+            Delete Post
+        </a>
+        @endif
+
         <br>
-
-
+        <br>
         {{-- Comment section --}}
+
+
         <div class="space-y-4">
+
+            <h5 class="text-xl font-bold dark:text-white">Post Comments:</h5>
 
             @foreach ($postcomments as $postcomment)
 

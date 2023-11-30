@@ -29,6 +29,7 @@
         id="title" type="text" placeholder="Enter the title of your post">
     </div>
     <div class="mb-4">
+      <input type="hidden" id="UserID" name="UserID" value="{{ Auth::id() }}">
       <label name="content" class="block text-gray-700 text-sm font-bold mb-2" for="content">
         Content:
       </label>

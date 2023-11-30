@@ -52,6 +52,13 @@ Route::middleware(['auth'])->group(function () {
     // post to PostController.storecomment with comment form data
     Route::post('/indpost', [PostController::class, 'storecomment'])->name('PostController.storecomment');
 
+    // Delete post by ID, from indpost view / individualpost component
+    Route::get('/deletepost/{postId}', [PostController::class, 'deletepost'])->name('deletepost');
+
+
+
+
+
 
 });
 

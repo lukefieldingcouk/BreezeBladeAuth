@@ -22,6 +22,7 @@ class PostController extends Controller
         ]);
         
         $NewPost = new UserPost();
+        $NewPost->userID = Auth::id();
         $NewPost->name = Auth::user()->name;
         $NewPost->title = $request->input('title');
         $NewPost->content = $request->input('content');
@@ -34,9 +35,7 @@ class PostController extends Controller
     // Showing all posts, paginated 
     public function show()
     {
-        // $post = UserPost::simplePaginate(4);
         $post = UserPost::orderBy('id', 'desc')->paginate(4);
-
         return view('posts.postfeed')->with('post', $post);
     }
 
@@ -49,7 +48,14 @@ class PostController extends Controller
         return view('posts.indpost', ['indpost' => $indpost, 'postcomments' => $postcomments]);
     }
 
+    // Deleting individual post, by PostID
+    public function deletepost($postid)
+    {
+        $postToDelete = UserPost::where('id', $postid);
+        $postToDelete->delete();
 
+        return view('posts.postfeed')->with('status', 'Post Deleted!');
+    }
 
 
     // Storing new comment
@@ -61,6 +67,7 @@ class PostController extends Controller
         ]);
 
         $NewComment = new PostComments();
+        $NewComment->UserID = Auth::id(); 
         $NewComment->commentor = Auth::user()->name;
         $NewComment->content = $commentrequest->input('content');
         $NewComment->postid = $commentrequest->input('postid');

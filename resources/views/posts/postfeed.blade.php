@@ -10,7 +10,9 @@
 
 <div class="container m-auto p-2">
 <!-- Post cards, passing $post variable from this page into post-box.blade.php component. -->
-<x-post-box :$post/>
+@if($post)
+    <x-post-box :post="$post" />
+@endif
 <br>
 
 {!! $post->render() !!}
